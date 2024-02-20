@@ -5,12 +5,12 @@ function CreateTimerWindow() {
   const win = new BrowserWindow({
     width: 200,
     height: 300,
-    resizable: false,
+    // resizable: false,
     maximizable: false,
     fullscreenable: false
   });
 
-  win.setMenu(null);
+  // win.setMenu(null);
 
   win.loadFile('views/timers/index.html');
 }

@@ -6,9 +6,17 @@
   <title>Main</title>
 </head>
 <body>
-  <main>
-    <p>Timers</p>
-  </main>
-  <script src="./app.js"></script>
+  <div id="app">
+    <p>{{ message }} Timers</p>
+  </div>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+  <script src="./app.js" type="module"></script>
 </body>
 </html>
