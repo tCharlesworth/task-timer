@@ -1,19 +1,6 @@
 const { app, Tray, Menu, nativeImage, BrowserWindow } = require('electron');
 const { setupIPC } = require('./utils/comm');
-
-function CreateTimerWindow() {
-  const win = new BrowserWindow({
-    width: 200,
-    height: 300,
-    // resizable: false,
-    maximizable: false,
-    fullscreenable: false
-  });
-
-  // win.setMenu(null);
-
-  win.loadFile('views/timers/index.html');
-}
+const CreateTimerWindow = require('./TimersWindow/TimersWindow');
 
 
 // app.on('window-all-closed', () => {
@@ -22,7 +9,7 @@ function CreateTimerWindow() {
 
 
 const setupTray = () => {
-  const trayIcon = nativeImage.createFromPath('images/Clock.png');
+  const trayIcon = nativeImage.createFromPath('electron/images/Clock.png');
   let tray = new Tray(trayIcon);
 
   const trayMenu = Menu.buildFromTemplate([
