@@ -13,15 +13,15 @@ const addTimer = ()=>{
 </script>
 
 <template>
-  <div>
+  <main>
     <p>Timers</p>
-    <div>
+    <div class="timer-list">
       <Timer v-for="(timer, index) in timers"
         :key="index"
         :name="timer.name"
         @remove="timers.splice(index, 1)"
       ></Timer>
     </div>
-    <button @click="addTimer">Add Timer</button>
-  </div>
+    <button class="fluid" @click="addTimer">Add Timer</button>
+  </main>
 </template>

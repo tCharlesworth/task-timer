@@ -8,7 +8,8 @@ export default defineConfig({
         timers: './src/views/timers/app.js'
       },
       output: {
-        entryFileNames: '[name].js'
+        entryFileNames: '[name].js',
+        assetFileNames: '[name].[ext]'
       }
     }
   },
