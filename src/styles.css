@@ -40,3 +40,6 @@ button.outline {
   border: 1px solid #263238;
   background-color: transparent;
 }
+button:disabled {
+  background-color: #f5f5f5;
+}

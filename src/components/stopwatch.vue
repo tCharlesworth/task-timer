@@ -27,7 +27,10 @@ function startStopwatch() {
   animate = requestAnimationFrame(update);
 }
 function pauseStopwatch() {
-
+  accumulated.value += elapsed.value;
+  elapsed.value = 0;
+  startTime.value = null;
+  cancelAnimationFrame(animate)
 }
 
 onUnmounted(() => {
@@ -43,13 +46,13 @@ onUnmounted(() => {
     <div class="stopwatch__content">
       <div>
         <!-- Time Display -->
-        <p>{{ Math.floor(elapsed/60).toString().padStart(2, '0') }}:{{ Math.floor(elapsed%60).toString().padStart(2, '0') }}</p>
+        <p>{{ Math.floor((elapsed + accumulated)/60).toString().padStart(2, '0') }}:{{ Math.floor((elapsed + accumulated)%60).toString().padStart(2, '0') }}</p>
       </div>
       <div>
         <!-- Actions -->
-        <button @click="startStopwatch">></button>
-        <button @click="pauseStopwatch">||</button>
-        <button @click="$emit('remove')">X</button>
+        <button @click="startStopwatch" :disabled="startTime ? true : false">></button>
+        <button @click="pauseStopwatch" :disabled="startTime ? false : true">||</button>
+        <button @click="$emit('remove')" :disabled="startTime ? true : false">X</button>
       </div>
     </div>
   </div>
