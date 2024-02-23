@@ -3,10 +3,10 @@ import { onUnmounted, ref } from 'vue'
 import dayjs from 'dayjs'
 import './Stopwatch.css'
 
-defineProps(['name'])
+const props = defineProps(['name', 'swid'])
 defineEmits(['remove'])
 
-const name = ref('name');
+const name = ref(props.name);
 const startTime = ref(null);
 const elapsed = ref(0);
 const accumulated = ref(0);
@@ -52,7 +52,7 @@ onUnmounted(() => {
         <!-- Actions -->
         <button @click="startStopwatch" :disabled="startTime ? true : false">></button>
         <button @click="pauseStopwatch" :disabled="startTime ? false : true">||</button>
-        <button @click="$emit('remove')" :disabled="startTime ? true : false">X</button>
+        <button @click="$emit('remove', props.swid)" :disabled="startTime ? true : false">X</button>
       </div>
     </div>
   </div>
