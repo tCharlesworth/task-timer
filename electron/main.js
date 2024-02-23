@@ -1,6 +1,6 @@
 const { app, Tray, Menu, nativeImage, BrowserWindow } = require('electron');
 const { setupIPC } = require('./utils/comm');
-const CreateTimerWindow = require('./TimersWindow/TimersWindow');
+const CreateStopwatchWindow = require('./StopwatchWindow/StopwatchesWindow');
 
 
 // app.on('window-all-closed', () => {
@@ -23,7 +23,7 @@ const setupTray = () => {
   tray.setTitle('Task Timer');
 
   tray.on('click', ()=>{
-    CreateTimerWindow();
+    CreateStopwatchWindow();
   });
 }
 
@@ -32,7 +32,7 @@ app.whenReady().then(() => {
   setupTray();
   setupIPC();
   if (BrowserWindow.getAllWindows().length === 0) {
-    CreateTimerWindow();
+    CreateStopwatchWindow();
   }
 });
 

@@ -1,7 +1,7 @@
 <script setup>
 import { onUnmounted, ref } from 'vue'
 import dayjs from 'dayjs'
-import './Timer.css'
+import './Stopwatch.css'
 
 defineProps(['name'])
 defineEmits(['remove'])
@@ -22,11 +22,11 @@ function update() {
   }
   animate = requestAnimationFrame(update);
 }
-function startTimer() {
+function startStopwatch() {
   startTime.value = dayjs();
   animate = requestAnimationFrame(update);
 }
-function pauseTimer() {
+function pauseStopwatch() {
 
 }
 
@@ -36,19 +36,19 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="timer">
+  <div class="stopwatch">
     <div>
       <input type="text" :class="focus-outline" :value="name" @change="setName" />
     </div>
-    <div class="timer__content">
+    <div class="stopwatch__content">
       <div>
         <!-- Time Display -->
         <p>{{ Math.floor(elapsed/60).toString().padStart(2, '0') }}:{{ Math.floor(elapsed%60).toString().padStart(2, '0') }}</p>
       </div>
       <div>
         <!-- Actions -->
-        <button @click="startTimer">></button>
-        <button @click="pauseTimer">||</button>
+        <button @click="startStopwatch">></button>
+        <button @click="pauseStopwatch">||</button>
         <button @click="$emit('remove')">X</button>
       </div>
     </div>

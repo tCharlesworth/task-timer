@@ -5,7 +5,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        timers: './src/views/timers/app.js'
+        stopwatches: './src/views/stopwatch/app.js'
       },
       output: {
         entryFileNames: '[name].js',
