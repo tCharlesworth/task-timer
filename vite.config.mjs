@@ -5,11 +5,14 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        stopwatches: './src/views/stopwatch/app.js'
+        // can only have 1 input
+        // stopwatches: './src/views/stopwatch/app.js',
+        mainWindow: './src/views/main/mainApp.js'
       },
       output: {
+        assetFileNames: '[name].[ext]',
+        chunkFileNames: '[name].js',
         entryFileNames: '[name].js',
-        assetFileNames: '[name].[ext]'
       }
     }
   },

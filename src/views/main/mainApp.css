@@ -1,0 +1,31 @@
+.quick-actions-trigger {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 35px;
+  height: 35px;
+}
+.quick-action-menu {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+}
+.quick-action-menu .backdrop {
+  background-color: rgba(0,0,0,0.15);
+  width: 100%;
+  height: 100%;
+
+  z-index: 5;
+}
+.quick-action-menu .actions {
+  position: absolute;
+  right: 20px;
+  bottom: 80px;
+
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

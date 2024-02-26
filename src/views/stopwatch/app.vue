@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import Stopwatch from '../../components/stopwatch.vue'
+import Stopwatch from '../../components/stopwatch/stopwatch.vue'
 
 const stopwatches = ref([])
 const createCount = ref(0)
