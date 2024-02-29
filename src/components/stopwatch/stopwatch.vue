@@ -1,7 +1,7 @@
 <script setup>
 import { onUnmounted, ref } from 'vue'
 import dayjs from 'dayjs'
-import './Stopwatch.css'
+import './stopwatch.css'
 
 const props = defineProps(['name', 'swid'])
 defineEmits(['remove'])
