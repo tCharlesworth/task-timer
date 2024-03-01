@@ -6,18 +6,16 @@ const props = defineProps(['name', 'tid'])
 
 const name = ref(props.name)
 
-const timeText = ref('12:12')
-const lastTimeText = ref('')
+const minText = ref('10')
+const hourText = ref('10')
 const showInput = ref(true)
 
 function setName(e) {
   name.value = e.target.value
 }
 
-function setTimeText(value) {
-  console.log('parent: ', value)
-  lastTimeText.value = timeText.value
-  timeText.value = value
+function startTimer() {
+  showInput.value = false
 }
 
 </script>
@@ -29,14 +27,14 @@ function setTimeText(value) {
     </div>
     <div>
       <div v-if="showInput">
-        <clock-input @update="setTimeText" :value="timeText" />
+        <clock-input v-model:hour="hourText" v-model:minute="minText" />
       </div>
       <div v-if="!showInput">
         <p>{{ Math.floor((elapsed + accumulated)/60).toString().padStart(2, '0') }}:{{ Math.floor((elapsed + accumulated)%60).toString().padStart(2, '0') }}</p>
       </div>
       <div>
         <!-- Actions -->
-        <button>></button>
+        <button @click="startTimer">></button>
         <button>||</button>
         <button @click="$emit('remove', props.tid)">X</button>
       </div>
