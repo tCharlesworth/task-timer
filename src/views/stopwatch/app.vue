@@ -28,7 +28,7 @@ addStopwatch();
       <Stopwatch v-for="(stopwatch) in stopwatches"
         :key="stopwatch.id"
         :swid="stopwatch.id"
-        :name="stopwatch.name"
+        v-model:name="stopwatch.name"
         @remove="removeStopwatch"
       ></Stopwatch>
     </div>

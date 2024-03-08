@@ -1,15 +1,19 @@
 <script setup>
 import { onUnmounted, ref } from 'vue'
 import dayjs from 'dayjs'
+import { timeToSeconds, secondsToTime } from '../../helpers/helpers'
 import './stopwatch.css'
 
+const timeModel = defineModel('time', { required: true })
 const props = defineProps(['name', 'swid'])
 defineEmits(['remove'])
+
+
 
 const name = ref(props.name);
 const startTime = ref(null);
 const elapsed = ref(0);
-const accumulated = ref(0);
+const accumulated = ref(timeToSeconds(timeModel.value || '0:0:0'));
 
 let animate
 
@@ -33,6 +37,10 @@ function pauseStopwatch() {
   cancelAnimationFrame(animate)
 }
 
+function getDisplayTime() {
+  return secondsToTime(elapsed.value + accumulated.value)
+}
+
 onUnmounted(() => {
   cancelAnimationFrame(animate)
 })
@@ -46,7 +54,7 @@ onUnmounted(() => {
     <div class="stopwatch__content">
       <div>
         <!-- Time Display -->
-        <p>{{ Math.floor((elapsed + accumulated)/60).toString().padStart(2, '0') }}:{{ Math.floor((elapsed + accumulated)%60).toString().padStart(2, '0') }}</p>
+        <p>{{ getDisplayTime() }}</p>
       </div>
       <div>
         <!-- Actions -->

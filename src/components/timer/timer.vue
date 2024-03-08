@@ -80,9 +80,9 @@ onUnmounted(() => {
       </div>
       <div>
         <!-- Actions -->
-        <button @click="startTimer">></button>
-        <button @click="pauseTimer">||</button>
-        <button @click="$emit('remove', props.tid)">X</button>
+        <button @click="startTimer" :disabled="startTime ? true : false">></button>
+        <button @click="pauseTimer" :disabled="startTime ? false : true">||</button>
+        <button @click="$emit('remove', props.tid)" :disabled="startTime ? true : false">X</button>
       </div>
     </div>
   </div>
