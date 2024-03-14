@@ -1,11 +1,11 @@
 const { app, Tray, Menu, nativeImage, BrowserWindow } = require('electron');
 const { setupIPC } = require('./utils/comm');
-const CreateMainWindow = require('./mainWindow/mainWindow');
+const { CenterMainWindow, OpenMainWindow, PinMainWindow } = require('./mainWindow/mainWindow');
 
 
-// app.on('window-all-closed', () => {
-//   if (process.platform !== 'darwin') app.quit()
-// });
+app.on('window-all-closed', () => {
+  // if (process.platform !== 'darwin') app.quit()
+});
 
 
 const setupTray = () => {
@@ -13,7 +13,9 @@ const setupTray = () => {
   let tray = new Tray(trayIcon);
 
   const trayMenu = Menu.buildFromTemplate([
-    { label: 'Reset Window Position' },
+    { label: 'Open', click: OpenMainWindow },
+    { label: 'Pin', click: PinMainWindow },
+    { label: 'Reset Window Position', click: CenterMainWindow },
     { label: 'Exit', role: 'quit' }
   ]);
 
@@ -23,7 +25,7 @@ const setupTray = () => {
   tray.setTitle('Task Timer');
 
   tray.on('click', ()=>{
-    CreateMainWindow();
+    OpenMainWindow();
   });
 }
 
@@ -32,7 +34,7 @@ app.whenReady().then(() => {
   setupTray();
   setupIPC();
   if (BrowserWindow.getAllWindows().length === 0) {
-    CreateMainWindow();
+    OpenMainWindow();
   }
 });
 
