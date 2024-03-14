@@ -34,5 +34,10 @@ module.exports = {
     if(win) {
       win.center()
     }
+  },
+  ToggleAlwaysOnTop: function() {
+    if(win) {
+      win.setAlwaysOnTop(!win.isAlwaysOnTop())
+    }
   }
 }

@@ -1,6 +1,6 @@
 const { app, Tray, Menu, nativeImage, BrowserWindow } = require('electron');
 const { setupIPC } = require('./utils/comm');
-const { CenterMainWindow, OpenMainWindow, PinMainWindow } = require('./mainWindow/mainWindow');
+const { CenterMainWindow, OpenMainWindow, PinMainWindow, ToggleAlwaysOnTop } = require('./mainWindow/mainWindow');
 
 
 app.on('window-all-closed', () => {
@@ -15,6 +15,7 @@ const setupTray = () => {
   const trayMenu = Menu.buildFromTemplate([
     { label: 'Open', click: OpenMainWindow },
     { label: 'Pin', click: PinMainWindow },
+    { label: 'OnTop', click: ToggleAlwaysOnTop },
     { label: 'Reset Window Position', click: CenterMainWindow },
     { label: 'Exit', role: 'quit' }
   ]);
