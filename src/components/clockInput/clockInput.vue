@@ -21,7 +21,7 @@ const checkDigit = (e) => {
 }
 
 function update() {
-  timeModel.value = `${pad2(hours)}:${pad2(minutes)}:${pad2(seconds)}`
+  timeModel.value = `${pad2(hours.value)}:${pad2(minutes.value)}:${pad2(seconds.value)}`
 }
 
 function checkHourInput (e) {
